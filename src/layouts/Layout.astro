@@ -1,0 +1,48 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body class="pb-8 sm:px-6 md:px-8 lg:px-12 xl:mx-50">
+    <Navbar />
+
+    <main
+      class="max-w-[--width-container] xl:mx-35 pt-20 sm:pt-24 px-4 sm:px-6 lg:px-8 animate-fade-in"
+    >
+      <div class="max-w-4xl mx-auto">
+        <slot />
+      </div>
+    </main>
+
+    <footer
+      class="text-center text-xs sm:text-sm opacity-40 mt-8 sm:mt-12 px-4"
+    >
+      &copy; {new Date().getFullYear()} Supawit Promma. All Rights Reserved.
+    </footer>
+
+    <script>
+      if (!localStorage.getItem("theme")) {
+        localStorage.setItem("theme", "dark");
+      }
+
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </body>
+</html>
