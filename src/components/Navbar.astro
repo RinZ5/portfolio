@@ -1,23 +1,108 @@
 ---
 import "../styles/global.css";
+import { Icon } from "astro-icon/components";
 
 import { SITE } from "../config";
 ---
 
-<nav class="fixed w-full z-20 top-0 left-0 backdrop-blur-md border-none">
-  <div
-    class="px-4 sm:px-6 md:px-8 lg:px-12 xl:mx-80 max-w-7xl py-3 sm:py-4 flex items-center justify-between"
-  >
-    <a href="/" class="font-bold text-base sm:text-lg flex items-center gap-2">
-      <span class="text-gray-900 dark:text-white">{SITE.NAME}</span>
+<nav
+  class="fixed w-full z-20 top-0 left-0 backdrop-blur-md bg-white/50 dark:bg-[#202023]/50"
+>
+  <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a
+      href="/"
+      class="font-bold text-lg flex items-center gap-2 hover:opacity-80 transition-opacity"
+    >
+      <span class="text-gray-900 dark:text-white font-mplus">{SITE.NAME}</span>
     </a>
 
-    <div class="flex gap-3 sm:gap-4 items-center">
+    <div class="hidden md:flex gap-6 items-center">
       <a
-        href="/"
-        class="hover:underline underline-offset-4 decoration-2 text-sm sm:text-base"
-        >Projects</a
+        href="/projects"
+        class="text-base font-bold text-gray-900 dark:text-white hover:underline underline-offset-4 decoration-2"
       >
+        Projects
+      </a>
+
+      <a
+        href="https://github.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+        aria-label="GitHub Profile"
+      >
+        <Icon name="mdi:github" class="w-6 h-6" />
+      </a>
+    </div>
+
+    <button
+      id="menu-btn"
+      class="md:hidden p-2 -mr-2 text-gray-900 dark:text-white rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+      aria-label="Toggle Menu"
+    >
+      <svg
+        id="icon-menu"
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 block"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <svg
+        id="icon-close"
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 hidden"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden absolute top-full left-0 w-full bg-[#f0e7db] dark:bg-[#202023] border-t border-gray-200 dark:border-gray-800 shadow-xl"
+  >
+    <div class="flex flex-col p-4 gap-4">
+      <a
+        href="/projects"
+        class="text-lg font-bold text-gray-900 dark:text-white"
+      >
+        Projects
+      </a>
+      <a
+        href="https://github.com"
+        target="_blank"
+        class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2"
+      >
+        GitHub
+      </a>
     </div>
   </div>
 </nav>
+
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const iconMenu = document.getElementById("icon-menu");
+  const iconClose = document.getElementById("icon-close");
+
+  menuBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+    iconMenu?.classList.toggle("hidden");
+    iconClose?.classList.toggle("hidden");
+    iconClose?.classList.toggle("block");
+  });
+</script>
