@@ -1,49 +1,52 @@
 @import "tailwindcss";
 
 @theme {
-    --font-sans: "M PLUS Rounded 1c", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "M PLUS Rounded 1c", ui-sans-serif, system-ui, sans-serif;
 
-    --color-glass: rgba(255, 255, 255, 0.25);
-    --color-glass-border: rgba(255, 255, 255, 0.2);
-    --color-surface-sun: #f0e7db;
-    --color-surface-dark: #202023;
-    --color-accent: #409eff;
-    --color-accent-hover: #337ecc;
+  --color-glass: rgba(255, 255, 255, 0.25);
+  --color-glass-border: rgba(255, 255, 255, 0.2);
+  --color-surface-sun: #f0e7db;
+  --color-surface-dark: #202023;
+  --color-accent: #409eff;
+  --color-accent-hover: #337ecc;
 
-    --width-container: 768px;
+  --color-text-light: #1a202c;
+  --color-text-dark: #e2e8f0;
 
-    --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --width-container: 768px;
+
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
 }
 
 @utility bio-year {
-    font-weight: bold;
-    margin-right: 1rem;
+  font-weight: bold;
+  margin-right: 1rem;
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 html {
-    background-color: var(--color-surface-sun);
-    color: #1a202c;
-    transition: background-color 0.2s ease;
+  background-color: var(--color-surface-sun);
+  color: var(--color-text-light);
+  transition: background-color 0.2s ease;
 }
 
 html.dark {
-    background-color: var(--color-surface-dark);
-    color: #eeeeee;
+  background-color: var(--color-surface-dark);
+  color: var(--color-text-dark);
 }
 
 body {
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
