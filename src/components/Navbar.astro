@@ -8,7 +8,9 @@ import { SITE } from "../config";
 <nav
   class="fixed w-full z-20 top-0 left-0 backdrop-blur-md bg-white/50 dark:bg-surface-dark/50"
 >
-  <div class="max-w-3xl mx-auto px-7 py-3 flex items-center justify-between">
+  <div
+    class="relative max-w-3xl mx-auto px-4 md:px-7 py-3 flex items-center justify-between"
+  >
     <a
       href="/"
       class="font-bold text-lg flex items-center gap-2 hover:opacity-80 transition-opacity"
@@ -16,14 +18,18 @@ import { SITE } from "../config";
       <span class="text-gray-900 dark:text-white font-mplus">{SITE.NAME}</span>
     </a>
 
-    <div class="hidden md:flex gap-6 items-center">
+    <div
+      class="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+    >
       <a
         href="/projects"
         class="text-base font-bold text-gray-900 dark:text-white hover:underline underline-offset-4 decoration-2"
       >
         Projects
       </a>
+    </div>
 
+    <div class="hidden md:flex gap-6 items-center">
       <a
         href="https://github.com"
         target="_blank"
@@ -40,53 +46,29 @@ import { SITE } from "../config";
       class="md:hidden p-2 -mr-2 text-gray-900 dark:text-white rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
       aria-label="Toggle Menu"
     >
-      <svg
-        id="icon-menu"
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6 block"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-      <svg
-        id="icon-close"
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6 hidden"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
+      <Icon name="mdi:menu" id="icon-menu" class="w-6 h-6 block" />
+
+      <Icon name="mdi:close" id="icon-close" class="w-6 h-6 hidden" />
     </button>
   </div>
 
   <div
     id="mobile-menu"
-    class="hidden md:hidden absolute top-full left-0 w-full bg-[#f0e7db] dark:bg-[#202023] border-t border-gray-200 dark:border-gray-800 shadow-xl"
+    class="hidden md:hidden absolute top-full left-0 w-full bg-surface-sun dark:bg-surface-dark border-b border-gray-200 dark:border-white/10 shadow-2xl"
   >
-    <div class="flex flex-col p-4 gap-4">
+    <div class="flex flex-col px-4 pb-4 gap-2">
       <a
         href="/projects"
-        class="text-lg font-bold text-gray-900 dark:text-white"
+        class="block px-4 py-3 text-lg font-bold text-gray-900 dark:text-gray-100 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
       >
         Projects
       </a>
       <a
         href="https://github.com"
         target="_blank"
-        class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2"
+        class="px-4 py-3 text-lg font-bold text-gray-900 dark:text-gray-100 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center gap-3"
       >
+        <Icon name="mdi:github" class="w-6 h-6" />
         GitHub
       </a>
     </div>
