@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import { projects } from "../data/projects";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
 ---
 
 <Layout title="All Projects">
@@ -16,12 +18,12 @@ import { projects } from "../data/projects";
 
   <div class="flex flex-col gap-6 lg:grid lg:grid-cols-2 lg:gap-10">
     {
-      projects.map((project) => (
+      allProjects.map((project) => (
         <ProjectCard
-          title={project.title}
-          desc={project.desc}
-          image={project.image}
-          link={project.link}
+          title={project.data.title}
+          desc={project.data.description}
+          image={project.data.image}
+          link={`/projects/${project.slug}`}
         />
       ))
     }
