@@ -3,15 +3,15 @@ import ProjectCard from "./ProjectCard.astro";
 import { getCollection } from "astro:content";
 
 const allProjects = await getCollection("projects");
-const featuredProjects = allProjects.filter(
-  (project) => project.data.isFeatured,
-);
+const featuredProjects = allProjects
+  .filter((project) => project.data.isFeatured)
+  .sort((a, b) => {
+    return a.data.sortOrder - b.data.sortOrder;
+  });
 ---
 
 <section class="mb-12">
-  <h3 class="section-title mb-8">
-    Featured Projects
-  </h3>
+  <h3 class="section-title mb-8">Featured Projects</h3>
 
   <div class="flex flex-col gap-6 lg:grid sm:grid-cols-2 lg:gap-10">
     {
@@ -21,9 +21,6 @@ const featuredProjects = allProjects.filter(
           desc={project.data.description}
           image={project.data.image}
           link={`/projects/${project.slug}`}
-          class={
-            featuredProjects.length === 3 && index === 0 ? "lg:col-span-2" : ""
-          }
         />
       ))
     }
