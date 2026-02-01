@@ -12,21 +12,34 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
   </head>
-  <body class="pb-8 sm:px-6 md:px-8 lg:px-12 xl:mx-50">
+
+  <body class="min-h-screen flex flex-col relative overflow-x-hidden">
     <Navbar />
 
     <main
-      class="max-w-[--width-container] xl:mx-35 pt-20 sm:pt-24 px-4 sm:px-6 lg:px-8 animate-fade-in"
+      class="flex-1 w-full max-w-2xl mx-auto pt-24 pb-12 px-4 sm:px-8 border-x border-white/5 bg-black/20 relative animate-fade-in"
     >
-      <div class="max-w-4xl mx-auto">
-        <slot />
+      <div
+        class="absolute top-24 left-0 w-1.5 h-12 bg-accent shadow-[0_0_15px_var(--color-accent)]"
+      >
       </div>
+      <div
+        class="absolute top-24 right-0 w-1.5 h-12 bg-accent shadow-[0_0_15px_var(--color-accent)]"
+      >
+      </div>
+
+      <slot />
     </main>
 
     <footer
-      class="text-center text-xs sm:text-sm opacity-40 mt-8 sm:mt-12 px-4"
+      class="text-center text-xs font-mono text-gray-400 py-8 border-t border-white/5 mt-auto"
     >
-      &copy; {new Date().getFullYear()} Supawit Promma. All Rights Reserved.
+      <div
+        class="max-w-3xl mx-auto px-4 flex justify-between items-center opacity-50"
+      >
+        <span>&copy; {new Date().getFullYear()} Supawit Promma.</span>
+        <span>// END_OF_LINE</span>
+      </div>
     </footer>
 
     <script>

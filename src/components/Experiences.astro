@@ -2,22 +2,24 @@
 import { experience } from "../data/experience";
 ---
 
-<section class="mb-6 sm:mb-8">
-  <h3 class="section-title mb-3 sm:mb-4">
-    Experiences
-  </h3>
+<section class="mb-10 sm:mb-12 animate-fade-in">
+  <h3 class="section-title">Experiences</h3>
 
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col">
     {
       experience.map((item) => (
-        <div class="grid grid-cols-[3.5rem_1fr] sm:grid-cols-[5rem_1fr] items-baseline gap-1">
-          <span class="font-bold text-sm sm:text-base text-gray-200">
+        <div class="flex gap-4 sm:gap-6 group">
+          <div class="w-16 sm:w-20 shrink-0 text-right pt-1 font-mono text-xs sm:text-sm font-bold text-gray-500 group-hover:text-accent transition-colors">
             {item.year}
-          </span>
+          </div>
 
-          <span class="text-sm sm:text-base text-gray-400">
-            {item.description}
-          </span>
+          <div class="relative border-l border-white/10 pl-6 pb-8 flex-1">
+            <div class="absolute -left-1.25 top-1.5 w-2.5 h-2.5 bg-surface-sun border border-gray-600 rounded-full group-hover:border-accent group-hover:shadow-[0_0_10px_var(--color-accent)] transition-all" />
+
+            <p class="text-sm sm:text-base text-gray-400 font-mono leading-relaxed group-hover:text-gray-200 transition-colors">
+              {item.description}
+            </p>
+          </div>
         </div>
       ))
     }

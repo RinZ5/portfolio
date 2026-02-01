@@ -1,31 +1,49 @@
 ---
 import "../styles/global.css";
 import { Icon } from "astro-icon/components";
-
 import { SITE } from "../config";
 ---
 
-<nav
-  class="fixed w-full z-20 top-0 left-0 backdrop-blur-md bg-white/50 dark:bg-surface-dark/50"
->
+<nav class="fixed w-full z-50 top-0 left-0 transition-all duration-300">
+  <div
+    class="absolute inset-0 bg-glass backdrop-blur-md border-b border-white/5"
+  >
+  </div>
+
+  <div
+    class="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-accent/50 to-transparent opacity-50"
+  >
+  </div>
+
   <div
     class="relative max-w-3xl mx-auto px-4 md:px-7 py-3 flex items-center justify-between"
   >
     <a
       href="/"
-      class="font-bold text-lg flex items-center gap-2 hover:opacity-80 transition-opacity"
+      class="group flex items-center gap-2 hover:opacity-100 transition-opacity"
     >
-      <span class="text-gray-900 dark:text-white font-mplus">{SITE.NAME}</span>
+      <div class="w-2 h-2 bg-accent rotate-45 group-hover:animate-pulse"></div>
+      <span class="text-gray-100 font-mono font-bold tracking-tighter text-lg">
+        {SITE.NAME}
+      </span>
     </a>
 
     <div
-      class="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+      class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8"
     >
       <a
         href="/projects"
-        class="text-base font-bold text-gray-900 dark:text-white hover:underline underline-offset-4 decoration-2"
+        class="relative text-sm font-mono font-bold text-gray-400 hover:text-accent transition-colors tracking-widest uppercase group"
       >
         Projects
+        <span
+          class="absolute -left-2 opacity-0 group-hover:opacity-100 transition-opacity text-accent"
+          >[</span
+        >
+        <span
+          class="absolute -right-2 opacity-0 group-hover:opacity-100 transition-opacity text-accent"
+          >]</span
+        >
       </a>
     </div>
 
@@ -34,42 +52,41 @@ import { SITE } from "../config";
         href="https://github.com"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+        class="text-gray-400 hover:text-accent transition-colors"
         aria-label="GitHub Profile"
       >
-        <Icon name="mdi:github" class="w-6 h-6" />
+        <Icon name="mdi:github" class="w-5 h-5" />
       </a>
     </div>
 
     <button
       id="menu-btn"
-      class="md:hidden p-2 -mr-2 text-gray-900 dark:text-white rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+      class="md:hidden p-2 -mr-2 text-gray-100 hover:text-accent transition-colors"
       aria-label="Toggle Menu"
     >
       <Icon name="mdi:menu" id="icon-menu" class="w-6 h-6 block" />
-
       <Icon name="mdi:close" id="icon-close" class="w-6 h-6 hidden" />
     </button>
   </div>
 
   <div
     id="mobile-menu"
-    class="hidden md:hidden absolute top-full left-0 w-full bg-surface-sun dark:bg-surface-dark border-b border-gray-200 dark:border-white/10 shadow-2xl"
+    class="hidden md:hidden absolute top-full left-0 w-full bg-surface-dark/95 backdrop-blur-xl border-b border-white/10 shadow-2xl"
   >
-    <div class="flex flex-col px-4 pb-4 gap-2">
+    <div class="flex flex-col p-4 gap-2">
       <a
         href="/projects"
-        class="block px-4 py-3 text-lg font-bold text-gray-900 dark:text-gray-100 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+        class="block px-4 py-3 text-sm font-mono uppercase tracking-widest text-gray-300 hover:text-accent hover:bg-white/5 border-l-2 border-transparent hover:border-accent transition-all"
       >
-        Projects
+        // Projects
       </a>
       <a
         href="https://github.com"
         target="_blank"
-        class="px-4 py-3 text-lg font-bold text-gray-900 dark:text-gray-100 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center gap-3"
+        class="px-4 py-3 text-sm font-mono uppercase tracking-widest text-gray-300 hover:text-accent hover:bg-white/5 border-l-2 border-transparent hover:border-accent transition-all flex items-center gap-3"
       >
-        <Icon name="mdi:github" class="w-6 h-6" />
-        GitHub
+        <Icon name="mdi:github" class="w-5 h-5" />
+        // GitHub
       </a>
     </div>
   </div>

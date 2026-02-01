@@ -2,13 +2,14 @@
 import { SITE } from "../config";
 ---
 
-<div
-  class="flex flex-col lg:flex-row items-center justify-between gap-4 mb-8 sm:mb-10"
->
-  <div class="w-full lg:w-auto">
-    <h2 class="text-2xl sm:text-3xl font-bold">{SITE.NAME}</h2>
-    <p class="text-sm sm:text-base">
-      {SITE.ROLE}
-    </p>
-  </div>
+<div class="flex flex-col gap-2 mb-10 sm:mb-12">
+  <h1
+    class="text-3xl sm:text-4xl font-black uppercase tracking-tighter font-mono text-gray-100 leading-none"
+  >
+    {SITE.NAME}
+  </h1>
+
+  <p class="text-sm sm:text-base text-gray-400 font-mono tracking-wide">
+    // {SITE.ROLE}
+  </p>
 </div>
