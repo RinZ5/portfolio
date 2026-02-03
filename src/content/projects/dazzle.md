@@ -28,5 +28,4 @@ To resolve these bottlenecks, I migrated our development environment to a fully 
 
 ## Key Technical Details
 * **Data Persistence:** Configured Docker Volumes to ensure MySQL data persisted across container restarts, preventing data loss during development cycles.
-* **Security:** Implemented **Role-Based Access Control (RBAC)** middleware to secure administrative endpoints, ensuring only authorized staff could modify inventory data.
 * **Tech Stack:** **Express** (Backend API), **EJS** (Server-Side Rendering), and **MySQL** (Relational Data).
