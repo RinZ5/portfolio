@@ -88,9 +88,8 @@ const { Content } = await entry.render();
             <img
               src={entry.data.image}
               alt={entry.data.title}
-              class="w-full h-full object-cover cut-corner opacity-90 group-hover:opacity-100 transition-opacity"
+              class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
             />
-            <div class="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px] pointer-events-none opacity-10" />
           </div>
         </div>
       )
@@ -99,25 +98,19 @@ const { Content } = await entry.render();
     <article
       class="prose prose-invert max-w-none
       
-      /* Base Text Styles */
       prose-p:text-gray-400 prose-p:font-mono prose-p:leading-7 prose-p:text-sm
       prose-li:text-gray-400 prose-li:font-mono prose-li:text-sm
       
-      /* Heading Styles */
       prose-headings:font-mono prose-headings:uppercase prose-headings:tracking-widest prose-headings:text-gray-100
       
-      /* H2: Replaces the '#' with a Vertical Cyan Bar */
       prose-h2:text-xl prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-6
       prose-h2:border-l-4 prose-h2:border-accent prose-h2:pl-4
       prose-h2:flex prose-h2:items-center
       
-      /* Links */
       prose-a:text-accent prose-a:no-underline hover:prose-a:underline hover:prose-a:text-accent-hover
       
-      /* Inner Images */
       prose-img:rounded-none prose-img:border prose-img:border-white/10
       
-      /* Strong Text */
       prose-strong:text-gray-100 prose-strong:font-bold"
     >
       <Content />
@@ -127,7 +120,7 @@ const { Content } = await entry.render();
       class="mt-16 pt-8 border-t border-white/5 flex justify-between text-xs font-mono text-gray-600"
     >
       <a href="/projects" class="hover:text-accent transition-colors"
-        >< BACK_TO_LIST</a
+        >{"<"} BACK_TO_LIST</a
       >
       <span>END_OF_FILE</span>
     </div>
