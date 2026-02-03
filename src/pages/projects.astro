@@ -9,7 +9,11 @@ const allProjects = await getCollection("projects");
 <Layout title="Projects">
   <div class="mb-12 relative">
     <div class="font-mono text-xs text-gray-600 mb-2 tracking-widest">
-      [DIR: ROOT/PROJECTS]
+      [DIR: <a
+        href="/"
+        class="hover:text-accent transition-colors border-b border-transparent hover:border-accent"
+        >ROOT</a
+      >/<span class="text-accent">PROJECTS</span>]
     </div>
 
     <h1

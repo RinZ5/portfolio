@@ -22,14 +22,28 @@ const { Content } = await entry.render();
 <Layout title={entry.data.title}>
   <div class="animate-fade-in">
     <div class="mb-12 border-b border-white/5 pb-8">
-      <div
-        class="flex items-center gap-2 text-xs font-mono text-gray-500 mb-6 tracking-widest uppercase"
-      >
-        <a href="/projects" class="hover:text-accent transition-colors"
-          >[DIR: PROJECTS]</a
+      <div class="mb-12 relative">
+        <div class="font-mono text-xs text-gray-600 mb-4 tracking-widest">
+          [DIR: <a
+            href="/"
+            class="hover:text-accent transition-colors border-b border-transparent hover:border-accent"
+            >ROOT</a
+          >/<a
+            href="/projects"
+            class="hover:text-accent transition-colors border-b border-transparent hover:border-accent"
+            >PROJECTS</a
+          >/<span class="text-accent">{entry.slug.toUpperCase()}</span>]
+        </div>
+
+        <h1
+          class="text-3xl sm:text-4xl font-black uppercase tracking-widest text-gray-100 font-mono mb-4"
         >
-        <span class="text-accent">/</span>
-        <span class="text-gray-300">FILE: {entry.data.title}</span>
+          {entry.data.title}
+        </h1>
+
+        <p class="text-gray-400 font-mono max-w-2xl leading-relaxed text-sm">
+          // {entry.data.description}
+        </p>
       </div>
 
       <h1
