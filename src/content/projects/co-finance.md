@@ -1,9 +1,10 @@
 ---
-title: "C-Finance"
+title: "Co-Finance"
 description: "A financial dashboard for visualizing stock market data."
 image: "/images/co-finance.png"
-tags: ["React Native", "Go"]
-link: "https://github.com/yourname/repo" 
+tags: ["Vuejs", "Go", "Docker", "GitHub Actions"]
+source: "https://github.com/RinZ5/co-finance" 
+link: "https://your-deployed-app-link.com"
 isFeatured: true
 ---
 

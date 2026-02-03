@@ -44,20 +44,35 @@ const { Content } = await entry.render();
         // {entry.data.description}
       </p>
 
-      <div class="flex flex-wrap items-center gap-6">
-        <div class="flex flex-wrap gap-2">
-          {
-            entry.data.tags.map((tag: string) => (
-              <span class="px-3 py-1 text-xs font-mono font-bold text-accent border border-accent/30 bg-accent/5 uppercase tracking-wider hover:bg-accent/10 transition-colors">
-                {tag}
+      <div class="flex flex-wrap gap-2 mb-6">
+        {
+          entry.data.tags.map((tag: string) => (
+            <span class="px-3 py-1 text-xs font-mono font-bold text-accent border border-accent/30 bg-accent/5 uppercase tracking-wider hover:bg-accent/10 transition-colors">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+
+      <div class="w-full flex items-center gap-6 justify-start">
+        {
+          entry.data.source && (
+            <a
+              href={entry.data.source}
+              target="_blank"
+              class="group inline-flex items-center gap-2 text-xs font-mono font-bold text-gray-400 hover:text-accent uppercase tracking-widest"
+            >
+              [ VIEW_SOURCE ]
+              <span class="opacity-50 group-hover:opacity-100 transition-opacity">
+                ↗
               </span>
-            ))
-          }
-        </div>
+            </a>
+          )
+        }
 
         {
-          entry.data.link && (
-            <div class="w-px h-6 bg-white/10 hidden sm:block" />
+          entry.data.source && entry.data.link && (
+            <span class="text-gray-700 hidden sm:block">/</span>
           )
         }
 
@@ -66,12 +81,13 @@ const { Content } = await entry.render();
             <a
               href={entry.data.link}
               target="_blank"
-              class="group inline-flex items-center gap-2 text-xs font-mono font-bold text-gray-400 hover:text-accent uppercase tracking-widest"
+              class="group inline-flex items-center gap-2 text-xs font-mono font-bold text-accent hover:text-white uppercase tracking-widest"
             >
-              [ VIEW_SOURCE ]
-              <span class="opacity-50 group-hover:opacity-100 transition-opacity">
-                ↗
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-accent" />
               </span>
+              [ LIVE_PREVIEW ]
             </a>
           )
         }
@@ -96,22 +112,7 @@ const { Content } = await entry.render();
     }
 
     <article
-      class="prose prose-invert max-w-none
-      
-      prose-p:text-gray-400 prose-p:font-mono prose-p:leading-7 prose-p:text-sm
-      prose-li:text-gray-400 prose-li:font-mono prose-li:text-sm
-      
-      prose-headings:font-mono prose-headings:uppercase prose-headings:tracking-widest prose-headings:text-gray-100
-      
-      prose-h2:text-xl prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-6
-      prose-h2:border-l-4 prose-h2:border-accent prose-h2:pl-4
-      prose-h2:flex prose-h2:items-center
-      
-      prose-a:text-accent prose-a:no-underline hover:prose-a:underline hover:prose-a:text-accent-hover
-      
-      prose-img:rounded-none prose-img:border prose-img:border-white/10
-      
-      prose-strong:text-gray-100 prose-strong:font-bold"
+      class="prose prose-invert max-w-none prose-p:text-gray-400 prose-p:font-mono prose-p:leading-7 prose-p:text-sm prose-li:text-gray-400 prose-li:font-mono prose-li:text-sm prose-headings:font-mono prose-headings:uppercase prose-headings:tracking-widest prose-headings:text-gray-100 prose-h2:text-xl prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-l-4 prose-h2:border-accent prose-h2:pl-4 prose-h2:flex prose-h2:items-center prose-a:text-accent prose-a:no-underline hover:prose-a:underline hover:prose-a:text-accent-hover prose-img:rounded-none prose-img:border prose-img:border-white/10 prose-strong:text-gray-100 prose-strong:font-bold"
     >
       <Content />
     </article>
