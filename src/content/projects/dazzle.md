@@ -9,23 +9,24 @@ isFeatured: false
 ## Project Overview
 Dazzle is a full-stack clothing e-commerce application that allows users to browse collections, manage shopping carts, and process orders.
 
-I led a **team of 4 developers** to build this system from scratch. My primary focus was designing the **REST API architecture** and engineering the **DevOps environment** to ensure the team could collaborate without problem.
+I led a **team of 4 developers** to build this system from scratch. My primary focus was architecting the **REST API** and engineering the **DevOps environment** to ensure a smooth development for the team.
 
-## The Engineering Challenge
-Early in development, we faced a critical issue. One of our core developers encountered an issue, while trying to conflicts when trying to install MySQL natively on their machine. This completely stalled their ability to work on their part of the project.
+## The Challenge
+Early in development, we faced a problem. One of our core developers encountered a problem when trying to install MySQL natively, which completely stalled their ability to work on their part.
 
-Additionally, the application suffered from **startup race conditions**, where the API would crash immediately because it attempted to connect to the database before the database service was fully initialized.
+Additionally, the application suffered from **startup race conditions**. The API would crash immediately upon launch because it attempted to query the database before the MySQL service was fully initialized and ready to accept connections.
 
-## The Solution: Containerization
-To fix the problem, I migrated our development environment to a fully containerized **Docker Compose** setup.
+## The Solution
+To resolve these bottlenecks, I migrated our development environment to a fully containerized **Docker Compose** setup.
 
-* **Dockerized Development:** By replacing manual installations with Docker, I allowed the blocked developer to spin up a perfect MySQL instance with a single command (`docker-compose up`), bypassing their local OS issues entirely.
-* **Healthcheck Orchestration:** I implemented **Healthchecks** in the `docker-compose.yml`. This forces the Express container to wait until the MySQL container reports it is "healthy" before attempting a connection, resolving **100% of startup race conditions**.
+* **Dockerized Consistency:** By containerizing the stack, I replaced manual installations with a deterministic environment. This allowed the blocked developer to spin up a fully configured MySQL instance with a single command (`docker-compose up`), bypassing their local OS issues entirely.
+* **Healthcheck Orchestration:** I implemented **Healthchecks** in the container orchestration. This forces the Express container to wait until the MySQL container reports it is "healthy" before attempting a connection, **resolving the startup race conditions**.
+* **Runtime Safety:** I built a custom **Environment Validation** layer that runs on startup. If a developer forgets a critical `.env` variable, the app fails fast with a clear, descriptive error message instead of crashing silently later during execution.
 ![Admin Dashboard Screenshot](/images/dazzle-admin.png)
 *Figure 1: The internal inventory management dashboard, powered by the containerized MySQL backend.*
-* **Runtime Safety:** I built a custom **Environment Validation** layer that runs immediately on startup. If a developer forgets a `.env` variable, the app fails fast with a clear error message instead of crashing silently later.
+
 
 ## Key Technical Details
-* **Dockerized Persistence:** Configured Docker Volumes to ensure MySQL data persisted across container restarts, preventing data loss during development.
-* **RBAC Implementation:** Designed a strict **Role-Based Access Control** system for the Backoffice to ensure only authorized staff could modify product data.
-* **Tech Stack:** Used **EJS** for server-side rendering, **Express** for the backend logic, and **MySQL** for relational data storage.
+* **Data Persistence:** Configured Docker Volumes to ensure MySQL data persisted across container restarts, preventing data loss during development cycles.
+* **Security:** Implemented **Role-Based Access Control (RBAC)** middleware to secure administrative endpoints, ensuring only authorized staff could modify inventory data.
+* **Tech Stack:** **Express** (Backend API), **EJS** (Server-Side Rendering), and **MySQL** (Relational Data).

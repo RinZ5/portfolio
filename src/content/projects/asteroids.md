@@ -17,7 +17,7 @@ The game uses **pre-existing sprite assets** sourced externally. However, separa
 
 Creating new sprites for every possible action combination was outside the scope of the project. To handle this, I implemented a **layered rendering approach**.
 
-By rendering multiple action sprites at the same position and moving them as a single entity, I allowed different actions to appear simultaneously. This solved the visual requirements without increasing asset complexity or memory usage.
+I structured the game entities to render multiple sprite layers (e.g., Ship Body, Engine Flame, Muzzle Flash) on top of each other. These layers move as a single coordinate object, but their visibility is toggled independently based on the game state. This allowed for complex visual states without needing unique assets for every combination.
 
 ## Architecture & Design
 The project follows a strict **MVC structure** to separate game logic from rendering and input handling.
@@ -30,7 +30,6 @@ Testing was a core requirement of the course. While the unit test suite was prim
 I focused on **reviewing the test code** and helping **debug edge cases**—specifically regarding collision logic—where errors were not being correctly detected during standard gameplay. We used **Mockito** to isolate these behaviors during debugging.
 
 ## Key Technical Details
-- **Language:** Java
-- **Architecture:** MVC
-- **Design Style:** Object-Oriented Programming
-- **Testing:** JUnit, Mockito
+* **Architectural Pattern:** Implemented a strict **MVC** structure to decouple game logic from the view layer, making the codebase easier to debug and extend.
+* **Rendering Strategy:** Developed a **layered rendering system** where separate sprites are stacked and controlled as a single entity, allowing for complex animation states (like moving + shooting) without creating unique assets for every combination.
+* **Quality Assurance:** Utilized **Mockito** to isolate dependencies during testing, allowing us to verify complex physics logic without launching the app and trying to get the test situation by ourselves.
